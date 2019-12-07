@@ -1,0 +1,11 @@
+<div class = "col-md-6 col-md-offset-3">
+	<div class = "edit-review-form">
+
+<h1>Edit Review Form</h1>
+<%= simple_form_for([@book,@review]) do |f|%>
+<%= f.input  :rating %>
+<%= f.input  :comment %>
+<%= f.button  :submit %>
+<% end %>
+</div>
+</div>
