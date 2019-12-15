@@ -20,6 +20,7 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jquery-rails'
 gem 'paperclip', '~> 6.1'
+gem 'elasticsearch-model'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

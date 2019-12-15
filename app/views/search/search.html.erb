@@ -1,0 +1,23 @@
+<h1>Book Search</h1>
+
+<%= form_for search_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "search", name: nil %>
+  </p>
+<% end %>
+
+
+
+
+<% unless @books.nil? %>
+  <% if @books.empty? %>
+    <h2>No Books found matching your query.</h2>
+  <% else %>
+    <h2>Available books for the above search</h2>
+    <% @books.each do |book| %>
+    <h1><%= link_to "#{book.title} - #{book.author}", book_path(book.id) %></h1>
+    <% end %>
+  <% end %>
+<% end %>
