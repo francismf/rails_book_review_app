@@ -8,15 +8,27 @@ class BooksController < ApplicationController
       @category_id = Category.find_by(name: params[:category]).id
       @books = Book.where(:category_id => @category_id).order("created_at DESC")
     end
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @books }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @book }
+    end
   end
 
   def new
     #@book = Book.new
     @book = current_user.books.build
     @categories = Category.all.map{|c| [c.name , c.id ]}
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @book }
+    end
   end
 
   def create
@@ -31,6 +43,10 @@ class BooksController < ApplicationController
 
   def edit
     @categories = Category.all.map{|c| [c.name , c.id ]}
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @book }
+    end
   end
 
 

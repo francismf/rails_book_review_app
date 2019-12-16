@@ -34,13 +34,9 @@ class Book < ApplicationRecord
             must_not:[],
             should:[
               {
-                match:
-                {
-                  title: query
-                },
-                match:
-                {
-                  author: query
+                multi_match: {
+                  query: query,
+                  fields: ['title^5', 'author']
                 }
               }
             ]
@@ -53,5 +49,5 @@ class Book < ApplicationRecord
       }
 
     )
-   end
+  end
 end
