@@ -8,7 +8,6 @@ RSpec.describe BooksController, type: :controller do
 
     context "Index page visible irrespective of login" do
       it "lists all books" do
-        debugger
         get :index
         expect(response).to have_http_status(:success)
       end
@@ -27,7 +26,6 @@ RSpec.describe BooksController, type: :controller do
   describe "GET #show" do
     context "Display the details of a book" do
       it "When a valid book id passed" do
-        debugger
         @category = Category.create(name: "Horror")
         @book = Book.create( :title =>  "SAW" , :description => "belongs to category horror" , :author => "James" , :user_id => 2 , :category => @category , :book_img => File.open("#{Rails.root}/che.jpg") )
         get :show , params: {id: @book.id , :format => :json}
@@ -75,6 +73,8 @@ RSpec.describe BooksController, type: :controller do
   describe "DELETE #destroy" do
     context "Books are destroyed" do
       it "When valid book id passed as param" do
+        delete :destroy , params: {:id => @book.id.to_i }
+        delete :destroy, :id => @book.id
       end
     end
   end
