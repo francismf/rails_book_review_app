@@ -21,8 +21,14 @@ gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'jquery-rails'
 gem 'paperclip', '~> 6.1'
 gem 'elasticsearch-model'
+gem 'redis-rails'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :development, :test do
+  gem 'rspec-rails', '3.7.2'
+  gem 'factory_bot_rails'
 end
 
 group :development do

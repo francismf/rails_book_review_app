@@ -5,7 +5,8 @@ class Book < ApplicationRecord
   has_many :reviews
   has_attached_file :book_img, styles: { book_index: "250x350>", book_show: "325x475>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :book_img, content_type: /\Aimage\/.*\z/
-
+  validates :title , presence: true , length: { minimum: 5 }
+  validates :author , presence: true , length: { minimum: 3 }
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   index_name Rails.application.class.parent_name.underscore
